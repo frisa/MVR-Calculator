@@ -12,10 +12,10 @@ namespace CppCLRWinformsProjekt {
 	/// <summary>
 	/// Zusammenfassung für Form1
 	/// </summary>
-	public ref class Form1 : public System::Windows::Forms::Form
+	public ref class MainForm : public System::Windows::Forms::Form
 	{
 	public:
-		Form1(void)
+		MainForm(void)
 		{
 			InitializeComponent();
 			//
@@ -27,7 +27,7 @@ namespace CppCLRWinformsProjekt {
 		/// <summary>
 		/// Verwendete Ressourcen bereinigen.
 		/// </summary>
-		~Form1()
+		~MainForm()
 		{
 			if (components)
 			{
@@ -48,16 +48,17 @@ namespace CppCLRWinformsProjekt {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MainForm::typeid));
 			this->SuspendLayout();
 			// 
-			// Form1
+			// MainForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1144, 693);
-			this->Name = L"Form1";
+			this->Name = L"MainForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
-			this->Text = L"Form1";
+			this->Text = L"MVR Calculator";
 			this->ResumeLayout(false);
 
 		}
