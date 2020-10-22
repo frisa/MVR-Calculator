@@ -1,14 +1,14 @@
 #pragma once
 
-
 ref class Logger
 {
 private:
-	System::Windows::Forms::RichTextBox^ _rtb;
-	Logger^ _instance;
+	static Logger^ _instance;
+	int mojecislo;
 	Logger();
+
 public:
-	Logger^ getInstance();
-	void Log()
+	static Logger^ getInstance();
+	void nastavMojeCislo(int cislo);
 };
 

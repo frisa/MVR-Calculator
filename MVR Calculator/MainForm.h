@@ -1,4 +1,5 @@
 #pragma once
+#include "Logger.h"
 
 namespace CppCLRWinformsProjekt {
 
@@ -135,6 +136,7 @@ namespace CppCLRWinformsProjekt {
 			this->Name = L"MainForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"MVR Calculator";
+			this->Load += gcnew System::EventHandler(this, &MainForm::MainForm_Load);
 			this->tableLayoutPanel1->ResumeLayout(false);
 			this->tableLayoutPanel1->PerformLayout();
 			this->ResumeLayout(false);
@@ -144,5 +146,9 @@ namespace CppCLRWinformsProjekt {
 	private: System::Void btnLoad_Click(System::Object^ sender, System::EventArgs^ e) {
 
 	}
+private: System::Void MainForm_Load(System::Object^ sender, System::EventArgs^ e) {
+	Logger::getInstance()->nastavMojeCislo(56);
+	Logger::getInstance()->nastavMojeCislo(65);
+}
 };
 }

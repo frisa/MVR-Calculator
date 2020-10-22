@@ -2,11 +2,20 @@
 
 Logger::Logger()
 {
-    throw gcnew System::NotImplementedException();
+    this->mojecislo = 99;
 }
 
 Logger^ Logger::getInstance()
 {
-    throw gcnew System::NotImplementedException();
-    // TODO: insert return statement here
+    if (_instance == nullptr)
+    {
+        _instance = gcnew Logger();
+    }
+    return _instance;
 }
+
+void Logger::nastavMojeCislo(int cislo)
+{
+    this->mojecislo = cislo;
+}
+
