@@ -14,8 +14,17 @@ Logger^ Logger::getInstance()
     return _instance;
 }
 
-void Logger::nastavMojeCislo(int cislo)
+void Logger::setOutput(System::Windows::Forms::RichTextBox^ rtb)
 {
-    this->mojecislo = cislo;
+    _rtb = rtb;
 }
+
+void Logger::log(System::String^ message)
+{
+    if (_rtb != nullptr)
+    {
+        _rtb->Text = message;
+    }
+}
+
 

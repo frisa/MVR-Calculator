@@ -41,6 +41,7 @@ namespace CppCLRWinformsProjekt {
 	private: System::Windows::Forms::TextBox^ txtFilePath;
 	private: System::Windows::Forms::Button^ btnLoad;
 	private: System::Windows::Forms::RichTextBox^ rtbLog;
+	private: Logger^ _logger;
 
 	private:
 		/// <summary>
@@ -147,8 +148,9 @@ namespace CppCLRWinformsProjekt {
 
 	}
 private: System::Void MainForm_Load(System::Object^ sender, System::EventArgs^ e) {
-	Logger::getInstance()->nastavMojeCislo(56);
-	Logger::getInstance()->nastavMojeCislo(65);
+	_logger->getInstance()->setOutput(rtbLog);
+	_logger->getInstance()->log("Loading");
+
 }
 };
 }
