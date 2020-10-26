@@ -1,5 +1,10 @@
 #pragma once
 #include "Logger.h"
+#include "CDesignPatterns.h"
+#include <iostream>
+#include <cstdio>
+
+
 
 namespace CppCLRWinformsProjekt {
 
@@ -9,6 +14,14 @@ namespace CppCLRWinformsProjekt {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace System::Runtime::InteropServices;
+
+	namespace Win32 {
+		[DllImport("kernel32.dll", CallingConvention = CallingConvention::StdCall)]
+		int AllocConsole();
+		[DllImport("kernel32.dll", CallingConvention = CallingConvention::StdCall)]
+		int FreeConsole();
+	}
 
 	/// <summary>
 	/// Zusammenfassung für Form1
@@ -137,6 +150,7 @@ namespace CppCLRWinformsProjekt {
 			this->Name = L"MainForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"MVR Calculator";
+			this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &MainForm::MainForm_FormClosing);
 			this->Load += gcnew System::EventHandler(this, &MainForm::MainForm_Load);
 			this->tableLayoutPanel1->ResumeLayout(false);
 			this->tableLayoutPanel1->PerformLayout();
@@ -148,9 +162,16 @@ namespace CppCLRWinformsProjekt {
 
 	}
 private: System::Void MainForm_Load(System::Object^ sender, System::EventArgs^ e) {
+	int rc = Win32::AllocConsole();
 	_logger->getInstance()->setOutput(rtbLog);
 	_logger->getInstance()->log("Loading");
-
+	CDesignPatterns* dp = new CDesignPatterns();
+	std::cout << "Application Starting" << std::endl;
+	printf("Application Started");
+	
+}
+private: System::Void MainForm_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
+	int rc = Win32::FreeConsole();
 }
 };
 }

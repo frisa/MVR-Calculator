@@ -32,6 +32,9 @@
     <ClInclude Include="Logger.h">
       <Filter>Headers</Filter>
     </ClInclude>
+    <ClInclude Include="CDesignPatterns.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CppCLR_WinformsProjekt.cpp">
@@ -47,6 +50,9 @@
       <Filter>Source Code</Filter>
     </ClCompile>
     <ClCompile Include="Logger.cpp">
+      <Filter>Source Code</Filter>
+    </ClCompile>
+    <ClCompile Include="CDesignPatterns.cpp">
       <Filter>Source Code</Filter>
     </ClCompile>
   </ItemGroup>
