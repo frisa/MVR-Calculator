@@ -5,7 +5,6 @@ ref class Logger
 private:
 	static Logger^ _instance;
 	System::Windows::Forms::RichTextBox^ _rtb;
-	int mojecislo;
 	Logger();
 
 public:

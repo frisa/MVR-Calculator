@@ -2,7 +2,6 @@
 
 Logger::Logger()
 {
-    this->mojecislo = 99;
 }
 
 Logger^ Logger::getInstance()
