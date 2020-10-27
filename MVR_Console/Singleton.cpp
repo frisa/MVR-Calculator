@@ -4,6 +4,7 @@ Singleton* Singleton::_instance = nullptr;
 
 Singleton::Singleton()
 {
+
 }
 
 Singleton* Singleton::getInstance()
