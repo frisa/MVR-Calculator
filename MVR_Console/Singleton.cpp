@@ -15,3 +15,8 @@ Singleton* Singleton::getInstance()
     }
     return _instance;
 }
+
+void Singleton::napisNeco()
+{
+    std::cout << "Neco";
+}

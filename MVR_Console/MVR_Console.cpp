@@ -2,51 +2,98 @@
 #include <memory>
 #include <algorithm>
 #include "CommonClass.h"
+#include <memory>
+#include "Singleton.h"
 
 
 using namespace std;
 
-#define HELLO "Hello"
+class interfaceTrida // interface
+{
+public:
+	virtual int dejObsah() = 0; // pure virtual
+	virtual int dejObvod() = 0; // pure virtual
+};
+
+class implementaciAT : public interfaceTrida
+{
+	virtual int dejObsah()
+	{
+		return 0;
+	}
+
+	virtual int dejObvod()
+	{
+		return 0;
+	}
+};
+
+class GrafickyObjekt
+{
+private:
+	int obsah;
+public:
+	virtual int dejObsah() = 0;
+};
+
+class Kruh : public GrafickyObjekt
+{
+	int r = 5;
+public:
+	virtual int dejObsah()
+	{
+		return 3.15 * r * r;
+	}
+	static int vypocitejMiObsahZParametru(int r) 
+	{
+		return 3.15 * r * r;
+	}
+};
+
+class Obdelnik : public GrafickyObjekt
+{
+	int h = 5;
+	int w = 10;
+public:
+	virtual int dejObsah()
+	{
+		return h*w;
+	}
+};
 
 
 int main()
 {
-	int var = 123;
-	int* pvar;
-	int& rvar = var;
-	pvar = &var;
-
-	cout << var << endl;
-	cout << pvar << endl;
-	cout << "??=" << endl;
+	Singleton::getInstance()->napisNeco();
 
 
+	int obseah = Kruh::vypocitejMiObsahZParametru(5);
+	
+	interfaceTrida* at;
+	at = new implementaciAT();
+	at->dejObsah();
 
 
+	GrafickyObjekt* gobjekt;
 
-	for (int i = 0; i < 2000000000; i++)
+	cout << "velikost v pameti obdelniku: " << sizeof(Obdelnik) << "[B]" << endl;
+
+	gobjekt = new Kruh();
+	cout << gobjekt->dejObsah() << endl;
+	delete gobjekt;
+
+	//gobjekt = new Obdelnik();
+	//cout << gobjekt->dejObsah() << endl;
+	//delete gobjekt;
+
+	Obdelnik* zrout;
+	unique_ptr<Obdelnik> szrout = make_unique<Obdelnik>();
+
+	for (int i = 0; i < 10000000; i++)
 	{
-		std::cout << i << " -> ";
-		CommonClass* cc = new CommonClass();
-		delete cc;
-
 		{
-			std::unique_ptr<CommonClass> ucc = std::make_unique<CommonClass>();
-			std::unique_ptr<CommonClass> ucc2 = std::move(ucc);
-			std::unique_ptr<CommonClass[]> ucca = std::make_unique<CommonClass[]>(2);
-			
-			std::unique_ptr<CommonClass> arr[10];
-			std::generate(
-				std::begin(arr), 
-				std::end(arr), 
-				[]() {return std::make_unique<CommonClass>(); }
-			);
-		}
-
-		{
-			std::shared_ptr<CommonClass> scc = std::make_shared<CommonClass>();
-			std::shared_ptr<CommonClass> scc2 = scc;
-			
+			//zrout = new Obdelnik();
+			unique_ptr<Obdelnik> szrout = make_unique<Obdelnik>();
 		}
 	}
 }
